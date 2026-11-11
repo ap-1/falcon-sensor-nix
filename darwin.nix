@@ -38,6 +38,7 @@ in
 
       if [ ! -e ${lib.escapeShellArg license} ]; then
         (
+          # shellcheck source=/dev/null
           . ${lib.escapeShellArg cfg.environmentFile}
           ${falconctl} license "$FALCONCTL_OPT_CID"
         )

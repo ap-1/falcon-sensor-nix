@@ -11,11 +11,11 @@ NixOS and nix-darwin modules for the CrowdStrike Falcon sensor.
 ```
 
 ```nix
-{ inputs, lib, ... }:
+{ inputs, ... }:
 {
   imports = [ inputs.falcon-sensor.nixosModules.default ];
 
-  nixpkgs.config.allowUnfreePredicate = pkg: lib.getName pkg == "falcon-sensor";
+  nixpkgs.config.allowUnfreePackages = [ "falcon-sensor" ];
 
   services.falcon-sensor = {
     enable = true;
